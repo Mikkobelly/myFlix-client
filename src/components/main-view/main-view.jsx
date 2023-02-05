@@ -28,7 +28,19 @@ const MainView = () => {
     }, []);
 
     if (selectedMovie) {
-        return <MovieView movie={selectedMovie} onBackClick={() => { return setSelectedMovie(null); }} />
+        let similarMovies = movies.filter((movie) => movie.genre === selectedMovie.genre && movie !== selectedMovie);
+        return <>
+            <MovieView movie={selectedMovie} onBackClick={() => { return setSelectedMovie(null); }} />
+            <hr></hr>
+            <h2>Similar movies:</h2>
+            {similarMovies.map((movie) => {
+                return <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                    onMovieClick={newSelectedMovie => setSelectedMovie(newSelectedMovie)}
+                />
+            })}
+        </>
     }
 
     if (movies.length === 0) {
