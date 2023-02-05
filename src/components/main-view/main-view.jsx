@@ -10,32 +10,19 @@ const MainView = () => {
     useEffect(() => {
         fetch("https://myflix-by-mikkobelly.herokuapp.com/movies")
             .then(res => res.json())
-            .then((movies) => {
-                const moviesFromApi = movies.map((movie) => {
-                    return {
-                        id: movie._id,
-                        title: movie.Title,
-                        description: movie.Description,
-                        genre: movie.Genre.Name,
-                        director: movie.Director.Name,
-                        image: movie.ImagePath
-                    };
-                });
-
-                setMovies(moviesFromApi);
-            })
+            .then(movies => setMovies(movies))
             .catch(err => console.log(err));
     }, []);
 
     if (selectedMovie) {
-        let similarMovies = movies.filter((movie) => movie.genre === selectedMovie.genre && movie !== selectedMovie);
+        let similarMovies = movies.filter((movie) => movie.Genre.Name === selectedMovie.Genre.Name && movie !== selectedMovie);
         return <>
             <MovieView movie={selectedMovie} onBackClick={() => { return setSelectedMovie(null); }} />
             <hr></hr>
             <h2>Similar movies:</h2>
             {similarMovies.map((movie) => {
                 return <MovieCard
-                    key={movie.id}
+                    key={movie._id}
                     movie={movie}
                     onMovieClick={newSelectedMovie => setSelectedMovie(newSelectedMovie)}
                 />
@@ -51,7 +38,7 @@ const MainView = () => {
     return <>
         {movies.map((movie) => {
             return <MovieCard
-                key={movie.id}
+                key={movie._id}
                 movie={movie}
                 onMovieClick={newSelectedMovie => { return setSelectedMovie(newSelectedMovie); }}
             />
