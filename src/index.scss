@@ -1,5 +1,4 @@
-$color: steelblue;
+$body-bg: PapayaWhip;
+$danger: tomato;
 
-.my-flix {
-    color: $color;
-}
+@import "~bootstrap/scss/bootstrap";
