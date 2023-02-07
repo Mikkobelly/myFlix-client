@@ -33,5 +33,3 @@ MovieCard.propTypes = {
 };
 
 export default MovieCard;
-
-{/* <div onClick={() => onMovieClick(movie)}>{movie.Title}</div> */ }

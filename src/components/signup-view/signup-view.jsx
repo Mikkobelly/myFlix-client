@@ -35,26 +35,6 @@ const SignupView = () => {
     };
 
     return (
-        // <form onSubmit={handleSubmit}>
-        //     <label>
-        //         Username:
-        //         <input type="text" value={username} onChange={e => setUsername(e.target.value)} required minLength="5" />
-        //     </label>
-        //     <label>
-        //         Password:
-        //         <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-        //     </label>
-        //     <label>
-        //         Email:
-        //         <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-        //     </label>
-        //     <label>
-        //         Birthday:
-        //         <input type="date" value={birthday} onChange={e => setBirthday(e.target.value)} required />
-        //     </label>
-        //     <button type="submit">Submit</button>
-        // </form>
-
         <Form onSubmit={handleSubmit} className="mb-5 p-4 bg-light bg-opacity-75 rounded">
             <Form.Text className="fw-bold fs-2 text-uppercase text-dark mb-3">Signup</Form.Text>
             <Form.Group className="my-3" controlId="formUsername">

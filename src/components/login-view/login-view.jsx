@@ -38,17 +38,6 @@ const LoginView = ({ onLoggedIn }) => {
     }
 
     return (
-        // <form onSubmit={handleSubmit}>
-        //     <label>
-        //         Username:
-        //         <input type="text" value={username} onChange={e => setUsername(e.target.value)} required minLength="5" />
-        //     </label>
-        //     <label>
-        //         Password:
-        //         <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-        //     </label>
-        //     <button type="submit">Login</button>
-        // </form>
         <Form onSubmit={handleSubmit} className="mb-5 p-4 bg-light bg-opacity-75 rounded">
             <Form.Text className="fw-bold fs-2 text-uppercase text-dark">Login</Form.Text>
             <Form.Group className="my-3" controlId="formUsername">

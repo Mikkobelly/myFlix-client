@@ -5,27 +5,6 @@ import Card from "react-bootstrap/Card";
 const MovieView = ({ movie, onBackClick }) => {
     return (
         <>
-            {/* <div className="text-center mb-3">
-                <img src={movie.ImagePath} />
-            </div>
-            <div>
-                <span>Title: </span>
-                <span>{movie.Title}</span>
-            </div>
-            <div>
-                <span>Description: </span>
-                <span>{movie.Description}</span>
-            </div>
-            <div>
-                <span>Genre: </span>
-                <span>{movie.Genre.Name}</span>
-            </div>
-            <div>
-                <span>Director: </span>
-                <span>{movie.Director.Name}</span>
-            </div>
-            <Button variant="outline-secondary" onClick={onBackClick}>Back</Button> */}
-
             <Card border="light">
                 <Card.Img className="mb-3" variant="top" src={movie.ImagePath} />
                 <Card.Body className="p-3 p-md-5">

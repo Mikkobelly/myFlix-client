@@ -28,50 +28,6 @@ const MainView = () => {
             .catch(err => console.log(err));
     }, [token]);
 
-    // let similarMovies = movies.filter((movie) => movie.Genre.Name === selectedMovie.Genre.Name && movie !== selectedMovie);
-
-    // if (!user) {
-    //     return <>
-    //         <h2>Login</h2>
-    //         <LoginView onLoggedIn={(user, token) => { setUser(user); setToken(token); }} />
-    //         or
-    //         <h2>Sign up</h2>
-    //         <SignupView />
-    //     </>
-    // }
-
-    // if (selectedMovie) {
-    //     let similarMovies = movies.filter((movie) => movie.Genre.Name === selectedMovie.Genre.Name && movie !== selectedMovie);
-    //     return <>
-    //         <MovieView movie={selectedMovie} onBackClick={() => { return setSelectedMovie(null); }} />
-    //         <hr></hr>
-    //         <h2>Similar Movies:</h2>
-    //         {similarMovies.map((movie) => {
-    //             return <MovieCard
-    //                 key={movie._id}
-    //                 movie={movie}
-    //                 onMovieClick={newSelectedMovie => setSelectedMovie(newSelectedMovie)}
-    //             />
-    //         })}
-    //     </>
-    // }
-
-    // if (movies.length === 0) {
-    //     return <div>Movie list is empty!</div>
-    // }
-
-
-    // return <>
-    //     {movies.map((movie) => {
-    //         return <MovieCard
-    //             key={movie._id}
-    //             movie={movie}
-    //             onMovieClick={newSelectedMovie => { return setSelectedMovie(newSelectedMovie); }}
-    //         />
-    //     })}
-    //     <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
-    // </>
-
     return (
         <Row className="justify-content-md-center">
             {!user ? (
@@ -102,8 +58,6 @@ const MainView = () => {
             )}
         </Row>
     )
-
-
 }
 
 export default MainView;
