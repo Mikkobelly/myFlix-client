@@ -1,8 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 const MovieCard = ({ movie, onMovieClick }) => {
-    return <div onClick={() => onMovieClick(movie)}>{movie.Title}</div>
+    return (
+        <Card border="light" className="h-100">
+            <Card.Img className="mb-3" variant="top" src={movie.ImagePath} />
+            <Card.Body className="text-center">
+                <Card.Title className="mb-3">{movie.Title}</Card.Title>
+                <Button variant="outline-success" onClick={() => onMovieClick(movie)}>See details</Button>
+            </Card.Body>
+        </Card>
+    )
 }
 
 MovieCard.propTypes = {
@@ -23,3 +33,5 @@ MovieCard.propTypes = {
 };
 
 export default MovieCard;
+
+{/* <div onClick={() => onMovieClick(movie)}>{movie.Title}</div> */ }
