@@ -1,8 +1,12 @@
 import React from 'react'
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link, useParams } from "react-router-dom";
 
-const MovieView = ({ movie, onBackClick }) => {
+const MovieView = ({ movies }) => {
+    const { movieId } = useParams();
+    const movie = movies.find(movie => movie._id === movieId);
+
     return (
         <>
             <Card border="light">
@@ -21,7 +25,9 @@ const MovieView = ({ movie, onBackClick }) => {
                         <span className="me-1 fw-semibold">Director: </span>
                         <span>{movie.Director.Name}</span>
                     </Card.Text>
-                    <Button className="mt-3" variant="outline-secondary" onClick={onBackClick}>Back</Button>
+                    <Link to={`/`}>
+                        <Button className="mt-3" variant="outline-secondary">Back</Button>
+                    </Link>
                 </Card.Body>
             </Card>
         </>
