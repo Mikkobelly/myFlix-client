@@ -1,0 +1,32 @@
+.card__body {
+    display: flex;
+    flex-direction: column;
+
+    &-inner {
+        flex: 1;
+    }
+}
+
+.button_movie-toggle {
+    background-color: transparent;
+    border: none;
+    margin: 1rem;
+}
+
+.icon {
+    width: 1.5rem;
+    height: auto;
+
+    &:hover {
+        filter: brightness(1.25);
+    }
+
+    &--add {
+        color: indianred;
+    }
+
+    &--delete {
+        color: slategrey;
+    }
+
+}

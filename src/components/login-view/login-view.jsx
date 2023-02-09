@@ -22,7 +22,6 @@ const LoginView = ({ onLoggedIn }) => {
             }
         }).then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 if (data.user) {
                     localStorage.setItem("user", JSON.stringify(data.user));
                     localStorage.setItem("token", data.token);
@@ -38,7 +37,7 @@ const LoginView = ({ onLoggedIn }) => {
     }
 
     return (
-        <Form onSubmit={handleSubmit} className="mb-5 p-4 bg-light bg-opacity-75 rounded">
+        <Form onSubmit={handleSubmit} className="p-4 bg-light bg-opacity-75 rounded">
             <Form.Text className="fw-bold fs-2 text-uppercase text-dark">Login</Form.Text>
             <Form.Group className="my-3" controlId="formUsername">
                 <Form.Label>Username:</Form.Label>

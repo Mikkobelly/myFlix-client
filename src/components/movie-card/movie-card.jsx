@@ -1,18 +1,97 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import { FaHeart, FaTrashAlt } from "react-icons/fa";
+
+import './movie-card.scss';
 
 const MovieCard = ({ movie }) => {
+    const storedToken = localStorage.getItem("token");
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const [movieExists, setMovieExists] = useState(false);
+    const [disableRemove, setDisableRemove] = useState(true);
+    const [favoriteMovies, setFavoriteMovies] = useState(storedUser.FavoriteMovies && storedUser.FavoriteMovies);
+
+
+    const addFavMovie = () => {
+        fetch(`https://myflix-by-mikkobelly.herokuapp.com/users/${storedUser.Username}/movies/${movie._id}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${storedToken}`
+            }
+        }).then(res => res.json())
+            .then((data) => {
+                if (data) {
+                    setFavoriteMovies(data.FavoriteMovies);
+                    localStorage.setItem("user", JSON.stringify(data))
+                    alert("Added to Favorite movies!")
+                    window.location.reload();
+                } else {
+                    alert("somethng went wrong")
+                }
+            }).catch(err => console.log(err));
+    };
+
+    const deleteFavMovie = () => {
+        fetch(`https://myflix-by-mikkobelly.herokuapp.com/users/${storedUser.Username}/movies/${movie._id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${storedToken}`
+            }
+        }).then(res => res.json())
+            .then((data) => {
+                if (data) {
+                    setFavoriteMovies(favoriteMovies.filter((favM) => favM !== movie._id));
+                    localStorage.setItem("user", JSON.stringify(data))
+                    alert("Deleted from Favorite movies")
+                    window.location.reload();
+                } else {
+                    alert("somethng went wrong")
+                }
+            }).catch(err => console.log(err));
+    }
+
+    const movieAdded = () => {
+        const hasMovie = favoriteMovies.some(favM => favM === movie._id);
+        hasMovie && setMovieExists(true);
+    };
+
+    const movieDeleted = () => {
+        const hasMovie = favoriteMovies.some(favM => favM === movie._id);
+        hasMovie && setDisableRemove(false);
+    };
+
+    useEffect(() => {
+        movieAdded()
+        movieDeleted()
+    }, [])
+
+
     return (
-        <Card border="light" className="h-100">
+        <Card border="light" className="h-100 bg-light bg-opacity-75">
             <Card.Img className="mb-3" variant="top" src={movie.ImagePath} />
-            <Card.Body className="text-center">
-                <Card.Title className="mb-3">{movie.Title}</Card.Title>
-                <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                    <Button variant="outline-success">See details</Button>
-                </Link>
+            <Card.Body className="text-center card__body">
+                <div className="card__body-inner">
+                    <Card.Title className="mb-4">{movie.Title}</Card.Title>
+                    <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+                        <Button variant="outline-success">See details</Button>
+                    </Link>
+                </div>
+                <div>
+                    {!movieExists &&
+                        <button onClick={addFavMovie} variant="light" className="button_movie-toggle">
+                            <FaHeart className="icon icon--add" />
+                        </button>}
+                    {!disableRemove &&
+                        <button onClick={deleteFavMovie} variant="light" className="button_movie-toggle">
+                            <FaTrashAlt className="icon icon--delete" />
+                        </button>
+                    }
+                </div>
             </Card.Body>
         </Card>
     )

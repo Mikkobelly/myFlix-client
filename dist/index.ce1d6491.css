@@ -1,3 +1,12 @@
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+#root {
+  height: 100vh;
+}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -12003,6 +12012,38 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+.card__body {
+  flex-direction: column;
+  display: flex;
+}
+
+.card__body-inner {
+  flex: 1;
+}
+
+.button_movie-toggle {
+  background-color: #0000;
+  border: none;
+  margin: 1rem;
+}
+
+.icon {
+  width: 1.5rem;
+  height: auto;
+}
+
+.icon:hover {
+  filter: brightness(1.25);
+}
+
+.icon--add {
+  color: #cd5c5c;
+}
+
+.icon--delete {
+  color: #708090;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
