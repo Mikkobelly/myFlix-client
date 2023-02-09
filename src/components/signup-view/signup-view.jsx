@@ -35,11 +35,11 @@ const SignupView = () => {
     };
 
     return (
-        <Form onSubmit={handleSubmit} className="mb-5 p-4 bg-light bg-opacity-75 rounded">
+        <Form onSubmit={handleSubmit} className="p-4 bg-light bg-opacity-75 rounded">
             <Form.Text className="fw-bold fs-2 text-uppercase text-dark mb-3">Signup</Form.Text>
             <Form.Group className="my-3" controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
-                <Form.Control className="bg-light" type="text" placeholder="username" value={username} onChange={e => setUsername(e.target.value)} required minLength="5" />
+                <Form.Control className="bg-light" type="text" placeholder="username" value={username} onChange={e => setUsername(e.target.value)} required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formPassword">
                 <Form.Label>Password:</Form.Label>
