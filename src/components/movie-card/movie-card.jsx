@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaHeart, FaTrashAlt } from "react-icons/fa";
 
-import './movie-card.scss';
+import "./movie-card.scss";
 
 const MovieCard = ({ movie }) => {
     const storedToken = localStorage.getItem("token");
@@ -72,7 +71,7 @@ const MovieCard = ({ movie }) => {
 
 
     return (
-        <Card border="light" className="h-100 bg-light bg-opacity-75">
+        <Card border="light" className="h-100 bg-light bg-opacity-75 shadow">
             <Card.Img className="mb-3" variant="top" src={movie.ImagePath} />
             <Card.Body className="text-center card__body">
                 <div className="card__body-inner">

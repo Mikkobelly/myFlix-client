@@ -1,0 +1,13 @@
+.myflix-logo {
+    width: 100%;
+    height: auto;
+
+    &__box {
+        width: 5.5rem;
+        height: auto;
+
+        @media only screen and (max-width: 500px) {
+            width: 4rem;
+        }
+    }
+}

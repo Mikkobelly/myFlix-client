@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import MovieCard from '../movie-card/movie-card';
 import { Container, Row, Col, Button, Card, Form } from "react-bootstrap";
-import Collapse from 'react-bootstrap/Collapse';
+import Collapse from "react-bootstrap/Collapse";
 
 const ProfileView = ({ user, movies, favMovies, onLoggedIn, onLoggedOut }) => {
     const [username, setUsername] = useState(user.Username);
@@ -88,7 +88,7 @@ const ProfileView = ({ user, movies, favMovies, onLoggedIn, onLoggedOut }) => {
                     <Container>
                         <Row>
                             {favMoviesData.map((movie) => (
-                                <Col md={6} lg={4} key={movie._id}>
+                                <Col md={6} lg={4} key={movie._id} className="mb-3">
                                     <MovieCard movie={movie} />
                                 </Col>
                             ))}

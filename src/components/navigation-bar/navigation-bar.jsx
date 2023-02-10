@@ -1,13 +1,18 @@
-import React from 'react';
+import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+import logo from "../../img/logo.png";
+import "./navigation-bar.scss";
 
 const NavigationBar = ({ user, onLoggedOut }) => {
     return (
         <Navbar expand="lg">
             <Container>
                 <Navbar.Brand as={Link} to="/">
-                    myFlix
+                    <div className="myflix-logo__box">
+                        <img src={logo} alt="myFlix" className="myflix-logo" />
+                    </div>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

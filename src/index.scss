@@ -1,9 +1,12 @@
-$body-bg: PapayaWhip;
 $danger: tomato;
 
 body {
     min-height: 100vh;
     width: 100%;
+
+    background-image: linear-gradient(rgba(255, 239, 213, 0.85), rgba(255, 239, 213, 0.85)),
+        url("./img/movies_bg.jfif") // background-image: linear-gradient(rgba(255, 239, 213, 0.85), rgba(255, 239, 213, 0.85)),
+        //     url("https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bW92aWUlMjBwb3N0ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60")
 }
 
 #root {

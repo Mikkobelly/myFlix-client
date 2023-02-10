@@ -1,15 +1,16 @@
-import React from 'react'
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import React from "react";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
+import MovieCard from '../movie-card/movie-card';
 
-const MovieView = ({ movies }) => {
+const MovieView = ({ movies, findSimilarMovies }) => {
     const { movieId } = useParams();
     const movie = movies.find(movie => movie._id === movieId);
+    const similarMovies = findSimilarMovies(movie);
 
     return (
         <>
-            <Card border="light" className="bg-light bg-opacity-75">
+            <Card border="light" className="bg-light bg-opacity-75 shadow">
                 <Card.Img className="mb-3" variant="top" src={movie.ImagePath} />
                 <Card.Body className="p-3 p-md-5">
                     <Card.Title className="mb-3 fw-bold fs-2">{movie.Title}</Card.Title>
@@ -30,6 +31,17 @@ const MovieView = ({ movies }) => {
                     </Link>
                 </Card.Body>
             </Card>
+
+            <Container>
+                <Row>
+                    <h2 className="my-3 my-md-5">Similar Movies: </h2>
+                    {similarMovies.map((movie) => (
+                        <Col md={6} lg={4} key={movie._id} className="mb-3">
+                            <MovieCard movie={movie} />
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
         </>
     )
 }
