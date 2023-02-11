@@ -2,7 +2,7 @@
 
 ## Overview
 
-[myFlix](https://myflix-by-mikkobelly.herokuapp.com/#)
+[myFlix](https://myflix-by-mikkobelly.netlify.app/#)
 
 The client-side of myFlix app will include several interface views that will handle data through the REST API endpoints([myFlix API](https://github.com/Mikkobelly/myFlix#))
 
@@ -23,4 +23,5 @@ The client-side of myFlix app will include several interface views that will han
 
 ## Dev Dependencies
 * @parcel/transformer-sass
+* parcel
 * process
