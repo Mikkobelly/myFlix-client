@@ -52,9 +52,9 @@ const MainView = () => {
     useEffect(() => {
         if (typedChar && typedChar.length > 0) {
             const searchedMoviesData = movies.filter(m => (
-                m.Title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(typedChar) ||
-                m.Genre.Name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(typedChar) ||
-                m.Director.Name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(typedChar)
+                m.Title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(typedChar.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) ||
+                m.Genre.Name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(typedChar.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) ||
+                m.Director.Name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(typedChar.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
             ));
             setSearchedMovies(searchedMoviesData);
         } else {
