@@ -35,26 +35,29 @@ const SignupView = () => {
     };
 
     return (
-        <Form onSubmit={handleSubmit} className="p-4 bg-light bg-opacity-75 rounded">
-            <Form.Text className="fw-bold fs-2 text-uppercase text-dark mb-3">Signup</Form.Text>
-            <Form.Group className="my-3" controlId="formUsername">
-                <Form.Label>Username:</Form.Label>
-                <Form.Control className="bg-light" type="text" placeholder="username" value={username} onChange={e => setUsername(e.target.value)} required />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formPassword">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control className="bg-light" type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)} required />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formEmail">
-                <Form.Label>Email:</Form.Label>
-                <Form.Control className="bg-light" type="email" placeholder="email" value={email} onChange={e => setEmail(e.target.value)} required />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Birthday:</Form.Label>
-                <Form.Control className="bg-light" type="date" placeholder="birthday" value={birthday} onChange={e => setBirthday(e.target.value)} required />
-            </Form.Group>
-            <Button type="submit" variant="success">Submit</Button>
-        </Form>
+        <>
+            <h1 className="text-center">Welcome to myFlix</h1>
+            <Form onSubmit={handleSubmit} className="p-4 bg-light bg-opacity-75 rounded my-5">
+                <Form.Text className="fw-bold fs-2 text-uppercase text-dark mb-3">Signup</Form.Text>
+                <Form.Group className="my-3" controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control className="bg-light" type="text" placeholder="username" value={username} onChange={e => setUsername(e.target.value)} required />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control className="bg-light" type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)} required />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formEmail">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control className="bg-light" type="email" placeholder="email" value={email} onChange={e => setEmail(e.target.value)} required />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Birthday:</Form.Label>
+                    <Form.Control className="bg-light" type="date" placeholder="birthday" value={birthday} onChange={e => setBirthday(e.target.value)} required />
+                </Form.Group>
+                <Button type="submit" variant="success">Submit</Button>
+            </Form>
+        </>
     )
 }
 

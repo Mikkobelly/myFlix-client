@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaHeart, FaTrashAlt } from "react-icons/fa";
 
-import './movie-card.scss';
+import "./movie-card.scss";
 
 const MovieCard = ({ movie }) => {
     const storedToken = localStorage.getItem("token");
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    const [movieExists, setMovieExists] = useState(false);
-    const [disableRemove, setDisableRemove] = useState(true);
-    const [favoriteMovies, setFavoriteMovies] = useState(storedUser.FavoriteMovies && storedUser.FavoriteMovies);
-
+    const [isFavorite, setIsFavorite] = useState(false);
+    const [favoriteMovies, setFavoriteMovies] = useState(storedUser.FavoriteMovies ? storedUser.FavoriteMovies : []);
 
     const addFavMovie = () => {
         fetch(`https://myflix-by-mikkobelly.herokuapp.com/users/${storedUser.Username}/movies/${movie._id}`, {
@@ -55,24 +52,18 @@ const MovieCard = ({ movie }) => {
             }).catch(err => console.log(err));
     }
 
-    const movieAdded = () => {
-        const hasMovie = favoriteMovies.some(favM => favM === movie._id);
-        hasMovie && setMovieExists(true);
-    };
-
-    const movieDeleted = () => {
-        const hasMovie = favoriteMovies.some(favM => favM === movie._id);
-        hasMovie && setDisableRemove(false);
-    };
+    const toggleMovie = () => {
+        const favoriteMoviesValues = Object.values(favoriteMovies);
+        favoriteMoviesValues.some(favM => favM === movie._id) ? setIsFavorite(true) : setFavoriteMovies(false);
+    }
 
     useEffect(() => {
-        movieAdded()
-        movieDeleted()
+        toggleMovie();
     }, [])
 
 
     return (
-        <Card border="light" className="h-100 bg-light bg-opacity-75">
+        <Card border="light" className="h-100 bg-light bg-opacity-75 shadow">
             <Card.Img className="mb-3" variant="top" src={movie.ImagePath} />
             <Card.Body className="text-center card__body">
                 <div className="card__body-inner">
@@ -82,11 +73,11 @@ const MovieCard = ({ movie }) => {
                     </Link>
                 </div>
                 <div>
-                    {!movieExists &&
+                    {!isFavorite &&
                         <button onClick={addFavMovie} variant="light" className="button_movie-toggle">
                             <FaHeart className="icon icon--add" />
                         </button>}
-                    {!disableRemove &&
+                    {isFavorite &&
                         <button onClick={deleteFavMovie} variant="light" className="button_movie-toggle">
                             <FaTrashAlt className="icon icon--delete" />
                         </button>
