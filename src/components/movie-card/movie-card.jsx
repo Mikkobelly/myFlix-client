@@ -9,10 +9,8 @@ import "./movie-card.scss";
 const MovieCard = ({ movie }) => {
     const storedToken = localStorage.getItem("token");
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    const [movieExists, setMovieExists] = useState(false);
-    const [disableRemove, setDisableRemove] = useState(true);
-    const [favoriteMovies, setFavoriteMovies] = useState(storedUser.FavoriteMovies && storedUser.FavoriteMovies);
-
+    const [isFavorite, setIsFavorite] = useState(false);
+    const [favoriteMovies, setFavoriteMovies] = useState(storedUser.FavoriteMovies ? storedUser.FavoriteMovies : []);
 
     const addFavMovie = () => {
         fetch(`https://myflix-by-mikkobelly.herokuapp.com/users/${storedUser.Username}/movies/${movie._id}`, {
@@ -54,19 +52,13 @@ const MovieCard = ({ movie }) => {
             }).catch(err => console.log(err));
     }
 
-    const movieAdded = () => {
-        const hasMovie = favoriteMovies.some(favM => favM === movie._id);
-        hasMovie && setMovieExists(true);
-    };
-
-    const movieDeleted = () => {
-        const hasMovie = favoriteMovies.some(favM => favM === movie._id);
-        hasMovie && setDisableRemove(false);
-    };
+    const toggleMovie = () => {
+        const favoriteMoviesValues = Object.values(favoriteMovies);
+        favoriteMoviesValues.some(favM => favM === movie._id) ? setIsFavorite(true) : setFavoriteMovies(false);
+    }
 
     useEffect(() => {
-        movieAdded()
-        movieDeleted()
+        toggleMovie();
     }, [])
 
 
@@ -81,11 +73,11 @@ const MovieCard = ({ movie }) => {
                     </Link>
                 </div>
                 <div>
-                    {!movieExists &&
+                    {!isFavorite &&
                         <button onClick={addFavMovie} variant="light" className="button_movie-toggle">
                             <FaHeart className="icon icon--add" />
                         </button>}
-                    {!disableRemove &&
+                    {isFavorite &&
                         <button onClick={deleteFavMovie} variant="light" className="button_movie-toggle">
                             <FaTrashAlt className="icon icon--delete" />
                         </button>
