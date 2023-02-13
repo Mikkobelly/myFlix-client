@@ -9,7 +9,7 @@
 
 .button {
 
-    border: none;
+    border: none !important;
     margin: 1rem;
 
     &--add {
@@ -18,7 +18,7 @@
 
     &--see,
     &--see:hover {
-        color: SeaGreen;
+        color: SeaGreen !important;
     }
 
     &--see {

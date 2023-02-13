@@ -12025,8 +12025,8 @@ textarea.form-control-lg {
 }
 
 .button {
-  border: none;
   margin: 1rem;
+  border: none !important;
 }
 
 .button--add {
@@ -12034,7 +12034,7 @@ textarea.form-control-lg {
 }
 
 .button--see, .button--see:hover {
-  color: #2e8b57;
+  color: #2e8b57 !important;
 }
 
 .button--see {
