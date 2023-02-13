@@ -12024,28 +12024,32 @@ textarea.form-control-lg {
   flex: 1;
 }
 
-.button_movie-toggle {
-  background-color: #0000;
+.button {
   border: none;
   margin: 1rem;
 }
 
-.icon {
-  width: 1.5rem;
-  height: auto;
+.button--add {
+  background-color: #0000;
+}
+
+.button--see, .button--see:hover {
+  color: #2e8b57;
+}
+
+.button--see {
   transition: all .2s;
 }
 
-.icon:hover {
+.button--see:hover, .button--add:hover > .icon {
   filter: brightness(1.25);
 }
 
 .icon--add {
+  width: 1.5rem;
+  height: auto;
   color: #cd5c5c;
-}
-
-.icon--delete {
-  color: #708090;
+  transition: all .2s;
 }
 
 .myflix-logo {

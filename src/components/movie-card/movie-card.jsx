@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { FaHeart, FaTrashAlt } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 import "./movie-card.scss";
 
@@ -69,18 +69,19 @@ const MovieCard = ({ movie }) => {
                 <div className="card__body-inner">
                     <Card.Title className="mb-4">{movie.Title}</Card.Title>
                     <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                        <Button variant="outline-success">See details</Button>
+                        <Button variant="link" className="button--see">See details</Button>
                     </Link>
                 </div>
                 <div>
                     {!isFavorite &&
-                        <button onClick={addFavMovie} variant="light" className="button_movie-toggle">
+                        <Button onClick={addFavMovie} variant="outline-secondary" size="sm" className="button button--add">
                             <FaHeart className="icon icon--add" />
-                        </button>}
+                            + Favorite
+                        </Button>}
                     {isFavorite &&
-                        <button onClick={deleteFavMovie} variant="light" className="button_movie-toggle">
-                            <FaTrashAlt className="icon icon--delete" />
-                        </button>
+                        <Button onClick={deleteFavMovie} variant="outline-secondary" size="sm" className="button button--delete">
+                            Remove from Favorite
+                        </Button>
                     }
                 </div>
             </Card.Body>

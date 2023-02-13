@@ -29,7 +29,7 @@ const SignupView = () => {
                 alert("Signup successfull");
                 window.location.reload();
             } else {
-                alert("Signup failed");
+                alert("Signup failed. Please try again with valid input.");
             }
         });
     };

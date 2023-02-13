@@ -7,27 +7,37 @@
     }
 }
 
-.button_movie-toggle {
-    background-color: transparent;
+.button {
+
     border: none;
     margin: 1rem;
+
+    &--add {
+        background-color: transparent;
+    }
+
+    &--see,
+    &--see:hover {
+        color: SeaGreen;
+    }
+
+    &--see {
+        transition: all .2s ease;
+
+        &:hover {
+            filter: brightness(1.25);
+        }
+    }
 }
 
-.icon {
+
+.button--add:hover>.icon {
+    filter: brightness(1.25);
+}
+
+.icon--add {
     width: 1.5rem;
     height: auto;
     transition: all .2s ease;
-
-    &:hover {
-        filter: brightness(1.25);
-    }
-
-    &--add {
-        color: indianred;
-    }
-
-    &--delete {
-        color: slategrey;
-    }
-
+    color: indianred;
 }
