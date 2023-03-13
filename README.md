@@ -42,7 +42,7 @@ The client-side of myFlix app will include several interface views that will han
 
 ## App showcase
 
-<img alt="A screenshot of myFlix App login view" src="/src/img/myFlx-react_login" width="100%">
-<img alt="A screenshot of myFlix App movies view" src="/src/img/myFlx-react_movies" width="100%">
-<img alt="A screenshot of myFlix App director view" src="/src/img/myFlx-react_director" width="100%">
-<img alt="A screenshot of myFlix App profile view" src="/src/img/myFlx-react_profile" width="100%">
+<img alt="A screenshot of myFlix App login view" src="/src/img/myFlx-react_login.png" width="100%">
+<img alt="A screenshot of myFlix App movies view" src="/src/img/myFlx-react_movies.png" width="100%">
+<img alt="A screenshot of myFlix App director view" src="/src/img/myFlx-react_director.png" width="100%">
+<img alt="A screenshot of myFlix App profile view" src="/src/img/myFlx-react_profile.png" width="100%">
